@@ -4,12 +4,14 @@ import { GraphQLSchema, buildSchema } from 'graphql';
 const app: express.Express = express();
 const port: number = 3000;
 
+// APIのデータ型の集合をスキーマと言う
 const schema: GraphQLSchema = buildSchema(`
   type Query {
     hello: String
   }
 `);
 
+// データを操作する処理を記述するのがリゾルバ
 const root = {
   hello: () => {
     return 'Hello World!';
