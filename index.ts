@@ -7,14 +7,14 @@ const port: number = 3000;
 // APIのデータ型の集合をスキーマと言う
 const schema: GraphQLSchema = buildSchema(`
   type Query {
-    hello: String
+    hello(name: String): String
   }
 `);
 
 // データを操作する処理を記述するのがリゾルバ
 const root = {
-  hello: () => {
-    return 'Hello World!';
+  hello: (args: { name: string }) => {
+    return `Hello, ${args.name}!`;
   },
 };
 
