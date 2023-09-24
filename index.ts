@@ -32,11 +32,11 @@ const schema: GraphQLSchema = buildSchema(`
 
   type Query {
     hello(name: String): String
-    getSampleUsers: [SampleUser]
+    sampleUsers: [SampleUser]
   }
 
   type Mutation {
-    postSampleUser(name: String, comment: String): SampleUser
+    addSampleUser(name: String, comment: String): SampleUser
   }
 `);
 
@@ -45,10 +45,10 @@ const root = {
   hello: () => {
     return `Hello!`;
   },
-  getSampleUsers: () => {
+  sampleUsers: () => {
     return sampleUsers;
   },
-  postSampleUser: (args: { name: string; comment: string }) => {
+  addSampleUser: (args: { name: string; comment: string }) => {
     const id = sampleUsers.length === 0 ? 1 : sampleUsers.length + 1;
     const addUser = {
       id: id,
